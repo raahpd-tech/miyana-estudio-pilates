@@ -1,10 +1,4 @@
 /* ==========================================================
-   MIYANA ESTUDIO
-   MAIN STYLESHEET
-========================================================== */
-
-
-/* ==========================================================
    DESIGN TOKENS
 ========================================================== */
 
@@ -18,8 +12,8 @@
     --color-light: #ebe6dd;
     --color-white: #ffffff;
     --color-black: #000000;
-    --color-text: #555555;
-    --color-grey: #666666;
+
+    --color-text: #555;
 
     /* ========= Tipografía ========= */
 
@@ -66,6 +60,16 @@
 
 }
 
+/* =====================================
+
+   BREAKPOINTS (Referencia)
+
+   Desktop : 1200px
+   Laptop  : 1024px
+   Tablet  : 768px
+   Mobile  : 480px
+
+===================================== */
 
 /* ==========================================================
    RESET
@@ -91,16 +95,10 @@ html {
 body {
 
     min-height: 100vh;
-    width: 100%;
-    max-width: 100%;
 
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
+img {
 
     display: block;
     max-width: 100%;
@@ -122,17 +120,6 @@ ol {
 
 }
 
-button,
-input,
-textarea,
-select {
-
-    font: inherit;
-    max-width: 100%;
-
-}
-
-
 /* ==========================================================
    GENERAL
 ========================================================== */
@@ -149,24 +136,31 @@ body {
 
 }
 
+/* ==========================================================
+   ACCESIBILIDAD
+========================================================== */
 
-/* Evita que palabras o URLs extremadamente largas
-   provoquen overflow */
+.sr-only {
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
+    position: absolute;
 
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+    width: 1px;
+
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
 
 }
-
 
 /* ==========================================================
    UTILIDADES DE ACCESIBILIDAD
@@ -192,7 +186,6 @@ a {
 
 }
 
-
 /* ==========================================================
    CONTENEDOR GLOBAL
 ========================================================== */
@@ -201,12 +194,9 @@ a {
 
     width: 90%;
     max-width: var(--container-width);
-
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 
 }
-
 
 /* ==========================================================
    HEADER
@@ -215,11 +205,10 @@ a {
 header {
 
     background-color: var(--color-white);
-
     position: sticky;
     top: 0;
-
     z-index: 1000;
+
 
 }
 
@@ -231,7 +220,6 @@ header {
 nav {
 
     display: flex;
-
     justify-content: space-between;
     align-items: center;
 
@@ -239,21 +227,15 @@ nav {
 
     padding: var(--space-md) 0;
 
-    min-width: 0;
-
 }
-
 
 /* ==========================================================
    MARCA
 ========================================================== */
-
 .brand {
 
     text-decoration: none;
     color: inherit;
-
-    min-width: 0;
 
 }
 
@@ -263,16 +245,12 @@ nav {
 
 }
 
+
 .brand p {
-
     color: var(--color-text);
-
     font-size: 1.1rem;
-
-    margin-top: -.3rem;
-
+    margin-top: -0.3rem;
 }
-
 
 /* ==========================================================
    MENÚ
@@ -284,20 +262,15 @@ nav {
 
     gap: var(--space-md);
 
-    min-width: 0;
 
 }
 
 .menu a {
-
-    padding: .6rem .9rem;
-
+    padding: 0.6rem 0.9rem;
     border-radius: 8px;
-
     transition:
-        background-color .3s ease,
-        color .3s ease;
-
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .menu a:hover,
@@ -308,32 +281,14 @@ nav {
 }
 
 .menu a.active {
-
     background-color: var(--color-accent);
-
     color: var(--color-primary);
-
     font-weight: 600;
-
 }
 
 .menu.is-open {
-
     display: flex;
-
 }
-
-
-/* ==========================================================
-   BOTÓN MENÚ MÓVIL
-========================================================== */
-
-.menu-toggle {
-
-    display: none;
-
-}
-
 
 /* ==========================================================
    HERO
@@ -350,11 +305,10 @@ nav {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
     gap: var(--space-xl);
-
-    min-width: 0;
 
 }
 
@@ -364,13 +318,12 @@ nav {
 
     line-height: 1.15;
 
+
 }
 
 .hero-content {
 
     flex: 2;
-
-    min-width: 0;
 
     display: flex;
 
@@ -386,11 +339,22 @@ nav {
 
 }
 
+
+.hero-content {
+
+    flex: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-md);
+
+}
+
 .hero-image {
 
     flex: 3;
-
-    min-width: 0;
 
     height: 450px;
 
@@ -405,12 +369,14 @@ nav {
 .hero-image img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
 
-}
+    box-shadow: var(--shadow-md);
 
+}
 
 /* ==========================================================
    BOTÓN
@@ -421,10 +387,10 @@ nav {
     display: inline-flex;
 
     justify-content: center;
+
     align-items: center;
 
     width: fit-content;
-    max-width: 100%;
 
     padding: .9rem 1.8rem;
 
@@ -455,9 +421,9 @@ nav {
 }
 
 
-/* ==========================================================
+/* ==========================
    ABOUT
-========================================================== */
+========================== */
 
 #about {
 
@@ -473,16 +439,11 @@ nav {
 
     gap: var(--space-xl);
 
-    min-width: 0;
-
 }
 
-.about-image,
-.about-content {
+.about-image {
 
     flex: 1;
-
-    min-width: 0;
 
 }
 
@@ -497,6 +458,8 @@ nav {
 }
 
 .about-content {
+
+    flex: 1;
 
     display: flex;
 
@@ -536,10 +499,9 @@ nav {
 
 }
 
-
-/* ==========================================================
+/* ==========================
    SERVICES
-========================================================== */
+========================== */
 
 #services {
 
@@ -558,6 +520,8 @@ nav {
     gap: var(--space-md);
 
 }
+
+/* ---------- Encabezado ---------- */
 
 #services h2 {
 
@@ -583,10 +547,9 @@ nav {
 
 }
 
-
-/* ==========================================================
-   SERVICES GRID
-========================================================== */
+/* ==========================
+   GRID
+========================== */
 
 .services-grid {
 
@@ -594,20 +557,17 @@ nav {
 
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
 
     gap: var(--space-md);
 
 }
 
-
-/* ==========================================================
-   SERVICE CARD
-========================================================== */
+/* ==========================
+   CARD
+========================== */
 
 .service-card {
-
-    min-width: 0;
 
     background-color: var(--color-white);
 
@@ -644,15 +604,22 @@ nav {
 
 }
 
+/* ---------- Imagen ---------- */
+
 .service-card img {
 
     width: 100%;
 
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4/3;
 
     object-fit: cover;
 
 }
+
+
+/* ==========================
+   CONTENIDO
+========================== */
 
 .service-content {
 
@@ -664,9 +631,9 @@ nav {
 
     padding: 1.5rem;
 
-    min-width: 0;
-
 }
+
+/* ---------- Título ---------- */
 
 .service-content h3 {
 
@@ -678,6 +645,8 @@ nav {
 
 }
 
+/* ---------- Texto ---------- */
+
 .service-content p {
 
     margin: 0;
@@ -686,10 +655,9 @@ nav {
 
 }
 
-
-/* ==========================================================
+/* ==========================
    TEAM
-========================================================== */
+========================== */
 
 #team {
 
@@ -708,6 +676,8 @@ nav {
     gap: var(--space-md);
 
 }
+
+/* ---------- Encabezado ---------- */
 
 #team h2 {
 
@@ -733,21 +703,27 @@ nav {
 
 }
 
+/* ==========================
+   GRID
+========================== */
+
 .team-grid {
 
     width: 100%;
 
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
 
     gap: var(--space-md);
 
 }
 
-.team-card {
+/* ==========================
+   CARD
+========================== */
 
-    min-width: 0;
+.team-card {
 
     background: var(--color-white);
 
@@ -757,22 +733,9 @@ nav {
 
     box-shadow: var(--shadow-md);
 
-    opacity: 0;
-
-    transform: translateY(25px);
-
     transition:
-        opacity .7s ease,
-        transform .7s ease,
+        transform var(--transition-fast),
         box-shadow var(--transition-fast);
-
-}
-
-.team-card.is-visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
 
 }
 
@@ -784,15 +747,47 @@ nav {
 
 }
 
+/* ==========================================================
+   ANIMACIÓN - TEAM
+========================================================== */
+
+.team-card {
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+.team-card.is-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ==========================
+   FOTO
+========================== */
+
 .team-card img {
 
     width: 100%;
 
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4/5;
 
     object-fit: cover;
 
 }
+
+/* ==========================
+   CONTENIDO
+========================== */
 
 .team-content {
 
@@ -804,9 +799,9 @@ nav {
 
     padding: 1.8rem;
 
-    min-width: 0;
-
 }
+
+/* ---------- Nombre ---------- */
 
 .team-content h3 {
 
@@ -818,6 +813,8 @@ nav {
 
 }
 
+/* ---------- Frase ---------- */
+
 .team-content blockquote {
 
     margin: 0;
@@ -826,7 +823,7 @@ nav {
 
     border-left: 4px solid var(--color-accent);
 
-    color: var(--color-grey);
+    color: var(--color-text);
 
     font-size: 1.05rem;
 
@@ -835,6 +832,8 @@ nav {
     font-style: italic;
 
 }
+
+/* ---------- Formación ---------- */
 
 .team-credentials {
 
@@ -846,9 +845,1596 @@ nav {
 
 }
 
+/* ==========================================================
+   HORARIOS
+========================================================== */
+
+#horarios {
+    padding: var(--space-xl) 0;
+}
+
 
 /* ==========================================================
-   ANIMACIÓN ABOUT
+   CONTENEDOR
+========================================================== */
+
+#horarios .horarios-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1200px;
+
+    box-sizing: border-box;
+
+    padding: 0 16px;
+
+    min-width: 0;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   ENCABEZADO
+========================================================== */
+
+#horarios .horarios-header,
+#horarios .horarios-cta {
+    text-align: center;
+    width: 100%;
+}
+
+#horarios .section-tag {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+#horarios h2 {
+    max-width: 700px;
+    margin: 0 auto;
+
+    font-size: 2.5rem;
+    line-height: 1.2;
+
+    color: var(--color-primary);
+}
+
+#horarios .section-description {
+    max-width: 700px;
+    margin: var(--space-sm) auto 0;
+
+    line-height: 1.8;
+    text-align: center;
+
+    color: var(--color-text);
+}
+
+
+/* ==========================================================
+   CONTENEDOR DE TABLA
+========================================================== */
+
+#horarios .table-wrapper {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 30px 0;
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    align-self: flex-start;
+
+    background-color: var(--color-white);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* ==========================================================
+   TABLA
+========================================================== */
+
+#horarios .schedule-table {
+    width: 100%;
+    min-width: 680px;
+
+    border-collapse: collapse;
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   ENCABEZADOS Y CELDAS
+========================================================== */
+
+#horarios .schedule-table th,
+#horarios .schedule-table td {
+    padding: 16px;
+
+    text-align: center;
+
+    border-bottom: 1px solid var(--color-accent);
+
+    white-space: nowrap;
+}
+
+#horarios .schedule-table th {
+    background-color: var(--color-light);
+
+    color: var(--color-primary);
+
+    font-weight: 600;
+}
+
+#horarios .schedule-table .th-time,
+#horarios .schedule-table .time-slot {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+#horarios .schedule-table td {
+    color: var(--color-text);
+    vertical-align: middle;
+}
+
+
+/* ==========================================================
+   CLASES
+========================================================== */
+
+#horarios .class-tag {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    background-color: var(--color-light);
+
+    border-radius: var(--radius-sm);
+
+    color: var(--color-text);
+
+    font-size: .9rem;
+}
+
+
+/* ==========================================================
+   HORARIO VACÍO
+========================================================== */
+
+#horarios .empty-slot {
+    color: var(--color-text);
+    opacity: .5;
+}
+
+
+/* ==========================================================
+   CTA
+========================================================== */
+
+#horarios .horarios-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: var(--space-sm);
+
+    margin-top: 0;
+}
+
+#horarios .horarios-cta p {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: .95rem;
+}
+
+
+/* ==========================
+   FAQ
+========================== */
+
+#faq {
+
+    padding: var(--space-xl) 0;
+
+}
+
+#faq .container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* ==========================
+   ENCABEZADO
+========================== */
+
+#faq h2 {
+
+    font-size: 2.5rem;
+
+    color: var(--color-primary);
+
+    text-align: center;
+
+    line-height: 1.2;
+
+    max-width: 700px;
+
+    margin: 1rem auto .8rem;
+
+}
+
+#faq .section-description {
+
+    max-width: 600px;
+
+    margin: 0 auto var(--space-lg);
+
+    text-align: center;
+
+    line-height: 1.8;
+
+    color: var(--color-text);
+
+}
+
+
+/* ==========================
+   LISTA
+========================== */
+
+.faq-list {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+}
+
+
+/* ==========================
+   ITEM
+========================== */
+
+.faq-item {
+
+    background: var(--color-white);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-md);
+
+    overflow: hidden;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.faq-item:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-md);
+
+}
+
+
+/* ==========================
+   PREGUNTA
+========================== */
+
+.faq-question {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 1.5rem;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-primary);
+
+    font-size: 1.2rem;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+/* ==========================
+   RESPUESTA
+========================== */
+
+.faq-answer {
+
+    display: none;
+
+    padding: 0 1.5rem 1.5rem;
+
+}
+
+.faq-answer p {
+
+    margin: 0;
+
+    color: var(--color-text);
+
+    line-height: 1.8;
+
+}
+
+
+/* ==========================
+   FAQ ABIERTO
+========================== */
+
+.faq-item.is-open .faq-answer {
+
+    display: block;
+
+}
+
+/* ==========================
+   CONTACT
+========================== */
+
+#contact {
+
+    padding: var(--space-xl) 0;
+
+    background-color: var(--color-light);
+
+}
+
+#contact .container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: var(--space-md);
+
+}
+
+/* ---------- Encabezado ---------- */
+
+#contact h2 {
+
+    font-size: 2.5rem;
+
+    color: var(--color-primary);
+
+    text-align: center;
+
+    line-height: 1.2;
+
+    max-width: 650px;
+
+}
+
+#contact .section-description {
+
+    max-width: 620px;
+
+    text-align: center;
+
+    line-height: 1.8;
+
+}
+
+/* ==========================
+   GRID
+========================== */
+
+.contact-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 3rem;
+
+    align-items: start;
+
+}
+
+/* ==========================
+   INFORMACIÓN
+========================== */
+
+.contact-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-md);
+
+}
+
+.contact-item h3 {
+
+    margin-bottom: .5rem;
+
+    color: var(--color-primary);
+
+    font-size: 1.2rem;
+
+}
+
+.contact-item p {
+
+    line-height: 1.8;
+
+}
+
+/* ==========================
+   CONTACT CARD
+========================== */
+
+.contact-card {
+
+    background-color: var(--color-white);
+
+    border-radius: var(--radius-md);
+
+    padding: 2.5rem;
+
+    box-shadow: var(--shadow-md);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.3rem;
+
+}
+
+.contact-card h3 {
+
+    color: var(--color-primary);
+
+    font-size: 1.8rem;
+
+}
+
+.contact-card p {
+
+    line-height: 1.8;
+
+}
+
+.contact-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-highlight {
+
+    font-weight: 600;
+
+    color: var(--color-primary);
+
+}
+
+.contact-card .button {
+    align-self: flex-start;
+    padding: .85rem 1.6rem;
+}
+
+/* ==========================================================
+   ANIMACIÓN - CONTACT
+========================================================== */
+
+.contact-card {
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+.contact-card.is-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+#footer {
+
+    background-color: var(--color-primary);
+
+    color: var(--color-footer-text);
+
+    padding: var(--space-xl) 0 0;
+
+}
+
+/* ==========================
+   GRID
+========================== */
+
+#footer .container {
+
+    display: grid;
+
+    grid-template-columns: 1.6fr 1fr .9fr;
+
+    gap: var(--space-xl);
+
+    align-items: start;
+
+}
+
+/* ==========================
+   BRAND
+========================== */
+
+.footer-brand h2 {
+
+    font-size: 2.4rem;
+
+    color: var(--color-footer-text);
+
+    margin-bottom: var(--space-sm);
+
+}
+
+.footer-brand p {
+
+    color: var(--color-footer-text-soft);
+
+    line-height: 1.8;
+
+    max-width: 300px;
+
+}
+
+/* ==========================
+   NAV Y REDES
+========================== */
+
+.footer-nav,
+.footer-social {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.footer-nav {
+
+    justify-self: center;
+
+}
+
+.footer-nav h3,
+.footer-social h3 {
+
+    margin-bottom: var(--space-md);
+
+    font-size: 1.1rem;
+
+    color: var(--color-footer-text);
+
+}
+
+.footer-nav ul,
+.footer-social ul {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-sm);
+
+}
+
+/* ==========================
+   ENLACES
+========================== */
+
+#footer a {
+
+    color: var(--color-footer-text-soft);
+
+    text-decoration: none;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+
+}
+
+#footer a:hover {
+
+    color: var(--color-footer-text);
+
+    transform: translateX(6px);
+
+}
+
+/* ==========================
+   FOOTER BOTTOM
+========================== */
+
+.footer-bottom {
+
+    margin-top: var(--space-xl);
+
+    padding: var(--space-md) 0;
+
+    border-top: 1px solid var(--color-footer-border);
+
+    text-align: center;
+
+}
+
+.footer-bottom p {
+
+    color: var(--color-footer-text-muted);
+
+    font-size: .9rem;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+/* ==========================================================
+   BOTÓN MENÚ MÓVIL
+========================================================== */
+
+.menu-toggle {
+    display: none;
+}
+
+.menu {
+    display: flex;
+}
+
+
+/* ==========================================================
+   RESPONSIVE - TABLET
+========================================================== */
+
+@media (max-width: 992px) {
+
+    /* ==========================
+       GENERAL
+    ========================== */
+
+    .container {
+        width: 90%;
+        max-width: 100%;
+    }
+
+
+    /* ==========================
+       HEADER
+    ========================== */
+
+    nav {
+        gap: var(--space-md);
+    }
+
+    .menu {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+
+    /* ==========================
+       HERO
+    ========================== */
+
+    #hero {
+        padding: var(--space-lg) 0;
+    }
+
+    #hero .container {
+        gap: var(--space-lg);
+    }
+
+    .hero-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .hero-image {
+        flex: 1;
+        min-width: 0;
+        height: 380px;
+    }
+
+
+    /* ==========================
+       ABOUT
+    ========================== */
+
+    #about {
+        padding: var(--space-lg) 0;
+    }
+
+    #about .container {
+        gap: var(--space-lg);
+    }
+
+    .about-image,
+    .about-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+
+    /* ==========================
+       SERVICES
+    ========================== */
+
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    #services h2 {
+        font-size: 2.2rem;
+    }
+
+
+    /* ==========================
+       TEAM
+    ========================== */
+
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    #team h2 {
+        font-size: 2.2rem;
+    }
+
+
+    /* ==========================
+       FAQ
+    ========================== */
+
+    #faq h2 {
+        font-size: 2.2rem;
+    }
+
+    .faq-list {
+        max-width: 800px;
+        width: 100%;
+    }
+
+
+    /* ==========================
+       CONTACT
+    ========================== */
+
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    #contact h2 {
+        font-size: 2.2rem;
+    }
+
+    .contact-card {
+        padding: 2rem;
+        min-width: 0;
+    }
+
+
+    /* ==========================
+       FOOTER
+    ========================== */
+
+    #footer .container {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: var(--space-lg);
+
+        min-width: 0;
+    }
+
+    .footer-brand,
+    .footer-nav,
+    .footer-social {
+        min-width: 0;
+    }
+
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE - TABLET PEQUEÑO / CELULAR
+========================================================== */
+
+@media (max-width: 768px) {
+
+    /* ==========================
+       GENERAL
+    ========================== */
+
+    .container {
+        width: 92%;
+        max-width: 100%;
+    }
+
+
+    /* ==========================
+       HEADER
+    ========================== */
+
+    nav {
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 1rem;
+
+        min-width: 0;
+    }
+
+    .brand {
+        min-width: 0;
+    }
+
+    .brand h1 {
+        font-size: 2rem;
+    }
+
+    .brand p {
+        font-size: .95rem;
+    }
+
+
+    /* ==========================
+       BOTÓN MENÚ
+    ========================== */
+
+    .menu-toggle {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        width: 42px;
+        height: 42px;
+
+        padding: 0;
+
+        background: transparent;
+
+        border: 1px solid var(--color-secondary);
+        border-radius: 8px;
+
+        color: var(--color-primary);
+
+        cursor: pointer;
+
+        font-size: 1.2rem;
+
+        transition:
+            background-color .2s ease,
+            border-color .2s ease;
+    }
+
+    .menu-toggle:hover {
+        background-color: var(--color-light);
+    }
+
+
+    /* ==========================
+       MENÚ MÓVIL
+    ========================== */
+
+    .menu {
+        display: none;
+
+        position: absolute;
+
+        top: calc(100% + .75rem);
+        right: 0;
+
+        width: min(340px, calc(100vw - 2rem));
+        max-width: calc(100vw - 2rem);
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: .2rem;
+
+        padding: .6rem;
+
+        box-sizing: border-box;
+
+        background-color: var(--color-light);
+
+        border: 1px solid var(--color-accent);
+        border-radius: 16px;
+
+        box-shadow: 0 8px 25px rgba(45, 45, 45, .08);
+
+        z-index: 1000;
+    }
+
+    .menu.is-open {
+        display: flex;
+    }
+
+    .menu li {
+        width: auto;
+        list-style: none;
+    }
+
+    .menu a {
+        display: block;
+
+        width: auto;
+
+        padding: .65rem .9rem;
+
+        color: var(--color-primary);
+
+        font-size: .95rem;
+
+        text-decoration: none;
+
+        border-radius: 10px;
+
+        transition:
+            background-color .2s ease,
+            color .2s ease;
+    }
+
+    .menu a:hover {
+        background-color: white;
+    }
+
+
+    /* ==========================
+       HERO
+    ========================== */
+
+    #hero {
+        padding: var(--space-lg) 0;
+    }
+
+    #hero .container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    #hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    #hero p {
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        min-width: 0;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 300px;
+    }
+
+
+    /* ==========================
+       ABOUT
+    ========================== */
+
+    #about {
+        padding: var(--space-lg) 0;
+    }
+
+    #about .container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .about-image,
+    .about-content {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .about-content {
+        align-items: flex-start;
+    }
+
+    .about-content h2 {
+        font-size: 2rem;
+    }
+
+
+    /* ==========================
+       SERVICES
+    ========================== */
+
+    #services {
+        padding: var(--space-lg) 0;
+    }
+
+    #services h2 {
+        font-size: 2rem;
+    }
+
+    #services .section-description {
+        font-size: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        min-width: 0;
+    }
+
+    .service-card img {
+        aspect-ratio: 4 / 3;
+        height: auto;
+    }
+
+    .service-content {
+        padding: 1.5rem;
+    }
+
+
+    /* ==========================
+       TEAM
+    ========================== */
+
+    #team {
+        padding: var(--space-lg) 0;
+    }
+
+    #team h2 {
+        font-size: 2rem;
+    }
+
+    #team .section-description {
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+    }
+
+    .team-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+
+    .team-card {
+        min-width: 0;
+    }
+
+    .team-card img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .team-content {
+        padding: 1.5rem;
+    }
+
+    .team-content h3 {
+        font-size: 1.35rem;
+    }
+
+    .team-content blockquote {
+        font-size: 1rem;
+    }
+
+    .team-credentials {
+        font-size: .9rem;
+    }
+
+
+    /* ==========================
+       FAQ
+    ========================== */
+
+    #faq {
+        padding: var(--space-lg) 0;
+    }
+
+    #faq h2 {
+        font-size: 2rem;
+    }
+
+    .faq-item {
+        min-width: 0;
+    }
+
+    .faq-item h3 {
+        font-size: 1.05rem;
+        padding: 1.2rem;
+    }
+
+    .faq-item p {
+        padding: 0 1.2rem 1.2rem;
+    }
+
+
+    /* ==========================
+       CONTACT
+    ========================== */
+
+    #contact {
+        padding: var(--space-lg) 0;
+    }
+
+    #contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .contact-card {
+        width: 100%;
+        min-width: 0;
+        padding: 1.5rem;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ==========================
+       FOOTER
+    ========================== */
+
+    #footer {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 2.5rem 0 0;
+
+        box-sizing: border-box;
+    }
+
+    #footer .container {
+        width: 92%;
+        max-width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr) minmax(0, 1fr);
+
+        gap: 2rem;
+
+        box-sizing: border-box;
+    }
+
+    .footer-brand,
+    .footer-nav,
+    .footer-social {
+        min-width: 0;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-brand h2 {
+        font-size: 1.8rem;
+        margin-bottom: .4rem;
+    }
+
+    .footer-brand p {
+        margin: 0 auto;
+        max-width: 280px;
+
+        line-height: 1.5;
+    }
+
+
+    /* Navegación */
+
+    .footer-nav {
+        justify-self: center;
+        align-items: center;
+
+        min-width: 0;
+    }
+
+    .footer-nav ul {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr) minmax(0, 1fr);
+
+        gap: .65rem 1.5rem;
+
+        min-width: 0;
+    }
+
+    .footer-nav li {
+        min-width: 0;
+        text-align: center;
+    }
+
+
+    /* Redes */
+
+    .footer-social {
+        justify-self: center;
+        align-items: center;
+
+        min-width: 0;
+    }
+
+    .footer-social ul {
+        display: flex;
+        flex-direction: row;
+
+        justify-content: center;
+
+        gap: 1rem;
+    }
+
+
+    /* Enlaces */
+
+    #footer a {
+        font-size: .9rem;
+    }
+
+    #footer a:hover {
+        transform: none;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE - CELULAR
+========================================================== */
+
+@media (max-width: 480px) {
+
+    /* ==========================
+       GENERAL
+    ========================== */
+
+    .container {
+        width: 94%;
+    }
+
+
+    /* ==========================
+       HEADER
+    ========================== */
+
+    .brand h1 {
+        font-size: 1.7rem;
+    }
+
+    .brand p {
+        font-size: .9rem;
+    }
+
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+
+        font-size: 1.1rem;
+    }
+
+
+    /* ==========================
+       MENÚ
+    ========================== */
+
+    .menu {
+        width: calc(100vw - 2rem);
+        max-width: calc(100vw - 2rem);
+
+        padding: .5rem;
+
+        border-radius: 14px;
+    }
+
+    .menu a {
+        padding: .6rem .75rem;
+        font-size: .9rem;
+    }
+
+
+    /* ==========================
+       HERO
+    ========================== */
+
+    #hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero-image {
+        height: 230px;
+    }
+
+
+    /* ==========================
+       ABOUT
+    ========================== */
+
+    .about-content h2 {
+        font-size: 1.7rem;
+    }
+
+
+    /* ==========================
+       SERVICES
+    ========================== */
+
+    #services h2 {
+        font-size: 1.7rem;
+    }
+
+    .service-content {
+        padding: 1.2rem;
+    }
+
+    .service-content h3 {
+        font-size: 1.3rem;
+    }
+
+
+    /* ==========================
+       TEAM
+    ========================== */
+
+    #team h2 {
+        font-size: 1.7rem;
+    }
+
+    .team-content {
+        padding: 1.2rem;
+        gap: .8rem;
+    }
+
+    .team-card img {
+        aspect-ratio: 1 / 1;
+    }
+
+
+    /* ==========================
+       FAQ
+    ========================== */
+
+    #faq h2 {
+        font-size: 1.7rem;
+    }
+
+    .faq-item h3 {
+        font-size: 1rem;
+    }
+
+
+    /* ==========================
+       CONTACT
+    ========================== */
+
+    #contact h2 {
+        font-size: 1.7rem;
+    }
+
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    .contact-card .button {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* ==========================
+       FOOTER
+    ========================== */
+
+    #footer {
+        padding-top: 2rem;
+    }
+
+    #footer .container {
+        display: block;
+
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .footer-brand {
+        margin-bottom: 1.75rem;
+    }
+
+    .footer-brand h2 {
+        font-size: 1.6rem;
+    }
+
+    .footer-brand p {
+        font-size: .9rem;
+        line-height: 1.5;
+    }
+
+
+    /* Navegación */
+
+    .footer-nav {
+        margin-bottom: 1.75rem;
+    }
+
+    .footer-nav h3,
+    .footer-social h3 {
+        font-size: .95rem;
+        margin-bottom: .8rem;
+    }
+
+    .footer-nav ul {
+        grid-template-columns:
+            minmax(0, 1fr) minmax(0, 1fr);
+
+        gap: .6rem .8rem;
+
+        width: 100%;
+    }
+
+    #footer a {
+        font-size: .9rem;
+    }
+
+
+    /* Redes */
+
+    .footer-social {
+        margin-bottom: 0;
+    }
+
+    .footer-social ul {
+        gap: 1rem;
+    }
+
+
+    /* Footer inferior */
+
+    .footer-bottom {
+        margin-top: 1.5rem;
+        padding: .8rem 0;
+    }
+
+    .footer-bottom p {
+        font-size: .75rem;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE - CELULAR MUY PEQUEÑO
+========================================================== */
+
+@media (max-width: 400px) {
+
+    /* ==========================
+       HEADER
+    ========================== */
+
+    .brand h1 {
+        font-size: 1.6rem;
+    }
+
+    .brand p {
+        font-size: .85rem;
+    }
+
+
+    /* ==========================
+       TÍTULOS
+    ========================== */
+
+    #hero h1,
+    .about-content h2,
+    #services h2,
+    #team h2,
+    #faq h2,
+    #contact h2 {
+        font-size: 1.6rem;
+    }
+
+}
+
+/* ==========================================================
+   ANIMACIÓN - ABOUT
 ========================================================== */
 
 .about-image,
@@ -881,1929 +2467,25 @@ nav {
 
 
 /* ==========================================================
-   HORARIOS
+   ACCESIBILIDAD - REDUCIR ANIMACIONES
 ========================================================== */
 
-#horarios {
-
-    padding: var(--space-xl) 0;
-
-}
-
-#horarios .container {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: var(--space-md);
-
-}
-
-#horarios h2 {
-
-    font-size: 2.5rem;
-
-    color: var(--color-primary);
-
-    text-align: center;
-
-    line-height: 1.2;
-
-    max-width: 700px;
-
-}
-
-#horarios .section-description {
-
-    max-width: 700px;
-
-    margin: 0 auto;
-
-    text-align: center;
-
-    line-height: 1.8;
-
-    color: var(--color-text);
-
-}
-
-
-/* ==========================================================
-   TABLA DE HORARIOS
-========================================================== */
-
-/*
-   IMPORTANTE:
-   La tabla puede ser más ancha que el celular,
-   pero el overflow queda contenido dentro de
-   .table-wrapper.
-*/
-
-.table-wrapper {
-
-    width: 100%;
-
-    max-width: 100%;
-
-    overflow-x: auto;
-
-    overflow-y: hidden;
-
-    background-color: var(--color-white);
-
-    padding: var(--space-xs);
-
-    border-radius: var(--radius-md);
-
-    box-shadow: var(--shadow-sm);
-
-    -webkit-overflow-scrolling: touch;
-
-}
-
-.schedule-table {
-
-    width: 100%;
-
-    min-width: 700px;
-
-    border-collapse: separate;
-
-    border-spacing: 6px;
-
-    text-align: center;
-
-}
-
-.schedule-table th {
-
-    padding: var(--space-sm);
-
-    background-color: var(--color-primary);
-
-    color: var(--color-white);
-
-    font-size: .9rem;
-
-    font-weight: 600;
-
-    text-transform: uppercase;
-
-    letter-spacing: .08em;
-
-    border-radius: var(--radius-sm);
-
-}
-
-.schedule-table .th-time {
-
-    background-color: var(--color-secondary);
-
-}
-
-.time-slot {
-
-    padding: var(--space-xs) var(--space-sm);
-
-    background-color: var(--color-secondary);
-
-    color: var(--color-white);
-
-    font-size: .85rem;
-
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    border-radius: var(--radius-sm);
-
-}
-
-.schedule-table td {
-
-    height: 52px;
-
-    padding: var(--space-xs);
-
-    background-color: var(--color-light);
-
-    color: var(--color-text);
-
-    vertical-align: middle;
-
-    border-radius: var(--radius-sm);
-
-    transition:
-        background-color var(--transition-fast),
-        color var(--transition-fast);
-
-}
-
-.schedule-table td:hover:not(.empty-slot) {
-
-    background-color: var(--color-accent);
-
-    color: var(--color-black);
-
-}
-
-.class-tag {
-
-    display: inline-block;
-
-    font-size: .85rem;
-
-    font-weight: 600;
-
-}
-
-.empty-slot {
-
-    background-color: var(--color-light);
-
-    opacity: .5;
-
-}
-
-
-/* ==========================================================
-   HORARIOS CTA
-========================================================== */
-
-.horarios-cta {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: var(--space-sm);
-
-    margin-top: var(--space-sm);
-
-    text-align: center;
-
-}
-
-.horarios-cta p {
-
-    margin: 0;
-
-    font-size: .95rem;
-
-    color: var(--color-text);
-
-}
-
-
-/* ==========================================================
-   FAQ
-========================================================== */
-
-#faq {
-
-    padding: var(--space-xl) 0;
-
-}
-
-#faq .container {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-}
-
-#faq h2 {
-
-    font-size: 2.5rem;
-
-    color: var(--color-primary);
-
-    text-align: center;
-
-    line-height: 1.2;
-
-    max-width: 700px;
-
-    margin: 1rem auto .8rem;
-
-}
-
-#faq .section-description {
-
-    max-width: 600px;
-
-    margin: 0 auto var(--space-lg);
-
-    text-align: center;
-
-    line-height: 1.8;
-
-    color: var(--color-grey);
-
-}
-
-.faq-list {
-
-    width: 100%;
-
-    max-width: 850px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 1rem;
-
-}
-
-.faq-item {
-
-    min-width: 0;
-
-    background: var(--color-white);
-
-    border-radius: var(--radius-md);
-
-    box-shadow: var(--shadow-md);
-
-    overflow: hidden;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-}
-
-.faq-item:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow: var(--shadow-md);
-
-}
-
-.faq-question {
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 1rem;
-
-    padding: 1.5rem;
-
-    border: none;
-
-    background: transparent;
-
-    color: var(--color-primary);
-
-    font-family: var(--font-primary);
-
-    font-size: 1.2rem;
-
-    font-weight: 600;
-
-    text-align: left;
-
-    cursor: pointer;
-
-}
-
-.faq-answer {
-
-    display: none;
-
-    padding: 0 1.5rem 1.5rem;
-
-}
-
-.faq-answer p {
-
-    margin: 0;
-
-    color: var(--color-grey);
-
-    line-height: 1.8;
-
-}
-
-.faq-item.is-open .faq-answer {
-
-    display: block;
-
-}
-
-
-/* ==========================================================
-   CONTACT
-========================================================== */
-
-#contact {
-
-    padding: var(--space-xl) 0;
-
-    background-color: var(--color-light);
-
-}
-
-#contact .container {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: var(--space-md);
-
-}
-
-#contact h2 {
-
-    font-size: 2.5rem;
-
-    color: var(--color-primary);
-
-    text-align: center;
-
-    line-height: 1.2;
-
-    max-width: 650px;
-
-}
-
-#contact .section-description {
-
-    max-width: 620px;
-
-    text-align: center;
-
-    line-height: 1.8;
-
-}
-
-.contact-grid {
-
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 3rem;
-
-    align-items: start;
-
-}
-
-.contact-info {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: var(--space-md);
-
-    min-width: 0;
-
-}
-
-.contact-item {
-
-    min-width: 0;
-
-}
-
-.contact-item h3 {
-
-    margin-bottom: .5rem;
-
-    color: var(--color-primary);
-
-    font-size: 1.2rem;
-
-}
-
-.contact-item p {
-
-    line-height: 1.8;
-
-}
-
-.contact-card {
-
-    min-width: 0;
-
-    background-color: var(--color-white);
-
-    border-radius: var(--radius-md);
-
-    padding: 2.5rem;
-
-    box-shadow: var(--shadow-md);
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 1.3rem;
-
-    opacity: 0;
-
-    transform: translateY(25px);
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-
-}
-
-.contact-card.is-visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-.contact-card h3 {
-
-    color: var(--color-primary);
-
-    font-size: 1.8rem;
-
-}
-
-.contact-card p {
-
-    line-height: 1.8;
-
-}
-
-.contact-highlight {
-
-    font-weight: 600;
-
-    color: var(--color-primary);
-
-}
-
-.contact-card .button {
-
-    align-self: flex-start;
-
-    padding: .85rem 1.6rem;
-
-}
-
-
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-#footer {
-
-    background-color: var(--color-primary);
-
-    color: var(--color-footer-text);
-
-    padding: var(--space-xl) 0 0;
-
-}
-
-#footer .container {
-
-    display: grid;
-
-    grid-template-columns: 1.6fr 1fr .9fr;
-
-    gap: var(--space-xl);
-
-    align-items: start;
-
-    min-width: 0;
-
-}
-
-#footer .container > * {
-
-    min-width: 0;
-
-}
-
-.footer-brand h2 {
-
-    font-size: 2.4rem;
-
-    color: var(--color-footer-text);
-
-    margin-bottom: var(--space-sm);
-
-}
-
-.footer-brand p {
-
-    color: var(--color-footer-text-soft);
-
-    line-height: 1.8;
-
-    max-width: 300px;
-
-}
-
-.footer-nav,
-.footer-social {
-
-    display: flex;
-
-    flex-direction: column;
-
-    min-width: 0;
-
-}
-
-.footer-nav {
-
-    justify-self: center;
-
-}
-
-.footer-nav h3,
-.footer-social h3 {
-
-    margin-bottom: var(--space-md);
-
-    font-size: 1.1rem;
-
-    color: var(--color-footer-text);
-
-}
-
-.footer-nav ul,
-.footer-social ul {
-
-    list-style: none;
-
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: var(--space-sm);
-
-}
-
-#footer a {
-
-    color: var(--color-footer-text-soft);
-
-    text-decoration: none;
-
-    transition:
-        color .3s ease,
-        transform .3s ease;
-
-}
-
-#footer a:hover {
-
-    color: var(--color-footer-text);
-
-    transform: translateX(6px);
-
-}
-
-.footer-bottom {
-
-    margin-top: var(--space-xl);
-
-    padding: var(--space-md) 0;
-
-    border-top: 1px solid var(--color-footer-border);
-
-    text-align: center;
-
-}
-
-.footer-bottom p {
-
-    color: var(--color-footer-text-muted);
-
-    font-size: .9rem;
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE - TABLET
-========================================================== */
-
-@media (max-width: 992px) {
-
-    .container {
-
-        width: 90%;
-
-    }
-
-
-    /* HEADER */
-
-    nav {
-
-        gap: var(--space-md);
-
-    }
-
-    .menu {
-
-        gap: 1.25rem;
-
-        flex-wrap: wrap;
-
-        justify-content: flex-end;
-
-    }
-
-
-    /* HERO */
-
-    #hero {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #hero .container {
-
-        gap: var(--space-lg);
-
-    }
-
+@media (prefers-reduced-motion: reduce) {
+
+    .service-card,
+    .about-image,
+    .about-content,
     .hero-content,
     .hero-image {
 
-        flex: 1;
-
-        min-width: 0;
-
-        height: 380px;
-
-    }
-
-    .hero-image {
-
-        height: 380px;
-
-    }
-
-
-    /* ABOUT */
-
-    #about {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #about .container {
-
-        gap: var(--space-lg);
-
-    }
-
-
-    /* SERVICES */
-
-    .services-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 1.5rem;
-
-    }
-
-    #services h2 {
-
-        font-size: 2.2rem;
-
-    }
-
-
-    /* TEAM */
-
-    .team-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 1.5rem;
-
-    }
-
-    #team h2 {
-
-        font-size: 2.2rem;
-
-    }
-
-
-    /* FAQ */
-
-    #faq h2 {
-
-        font-size: 2.2rem;
-
-    }
-
-    .faq-list {
-
-        max-width: 800px;
-
-    }
-
-
-    /* CONTACT */
-
-    .contact-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 2rem;
-
-    }
-
-    #contact h2 {
-
-        font-size: 2.2rem;
-
-    }
-
-    .contact-card {
-
-        padding: 2rem;
-
-    }
-
-
-    /* FOOTER */
-
-    #footer .container {
-
-        grid-template-columns:
-            1.4fr 1fr 1fr;
-
-        gap: var(--space-lg);
-
-    }
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE - 768px
-========================================================== */
-
-@media (max-width: 768px) {
-
-    /* GENERAL */
-
-    .container {
-
-        width: 92%;
-
-    }
-
-
-    /* HEADER */
-
-    nav {
-
-        position: relative;
-
-        display: flex;
-
-        flex-direction: row;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        gap: 1rem;
-
-        min-width: 0;
-
-    }
-
-    .brand {
-
-        min-width: 0;
-
-        flex: 1;
-
-    }
-
-    .brand h1 {
-
-        font-size: 2rem;
-
-    }
-
-    .brand p {
-
-        font-size: .95rem;
-
-    }
-
-
-    /* MENU BUTTON */
-
-    .menu-toggle {
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        flex-shrink: 0;
-
-        width: 42px;
-        height: 42px;
-
-        padding: 0;
-
-        background: transparent;
-
-        border: 1px solid var(--color-secondary);
-
-        border-radius: 8px;
-
-        color: var(--color-primary);
-
-        cursor: pointer;
-
-        font-size: 1.2rem;
-
-        transition:
-            background-color .2s ease,
-            border-color .2s ease;
-
-    }
-
-    .menu-toggle:hover {
-
-        background-color: var(--color-light);
-
-    }
-
-
-    /* MOBILE MENU */
-
-    .menu {
-
-        display: none;
-
-        position: absolute;
-
-        top: calc(100% + .75rem);
-
-        right: 0;
-
-        width: min(340px, 100%);
-
-        max-width: 100%;
-
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        align-items: center;
-
-        gap: .2rem;
-
-        padding: .6rem;
-
-        background-color: var(--color-light);
-
-        border: 1px solid var(--color-accent);
-
-        border-radius: 16px;
-
-        box-shadow:
-            0 8px 25px rgba(45, 45, 45, .08);
-
-        z-index: 1000;
-
-    }
-
-    .menu.is-open {
-
-        display: flex;
-
-    }
-
-    .menu li {
-
-        width: auto;
-
-        min-width: 0;
-
-    }
-
-    .menu a {
-
-        display: block;
-
-        width: auto;
-
-        padding: .65rem .9rem;
-
-        color: var(--color-primary);
-
-        font-size: .95rem;
-
-        text-decoration: none;
-
-        border-radius: 10px;
-
-        transition:
-            background-color .2s ease,
-            color .2s ease;
-
-    }
-
-    .menu a:hover {
-
-        background-color: var(--color-white);
-
-    }
-
-
-    /* HERO */
-
-    #hero {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #hero .container {
-
-        flex-direction: column;
-
-        gap: var(--space-md);
-
-    }
-
-    #hero h1 {
-
-        font-size: 2rem;
-
-        line-height: 1.2;
-
-        text-align: center;
-
-    }
-
-    #hero p {
-
-        text-align: center;
-
-    }
-
-    .hero-content {
-
-        width: 100%;
-
-        min-width: 0;
-
-        align-items: center;
-
-        text-align: center;
-
-    }
-
-    .hero-image {
-
-        width: 100%;
-
-        height: 300px;
-
-    }
-
-
-    /* ABOUT */
-
-    #about {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #about .container {
-
-        flex-direction: column;
-
-        gap: var(--space-md);
-
-    }
-
-    .about-image,
-    .about-content {
-
-        width: 100%;
-
-        min-width: 0;
-
-    }
-
-    .about-content {
-
-        align-items: flex-start;
-
-    }
-
-    .about-content h2 {
-
-        font-size: 2rem;
-
-    }
-
-
-    /* SERVICES */
-
-    #services {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #services h2 {
-
-        font-size: 2rem;
-
-    }
-
-    #services .section-description {
-
-        font-size: 1rem;
-
-    }
-
-    .services-grid {
-
-        grid-template-columns:
-            minmax(0, 1fr);
-
-        gap: 1.5rem;
-
-    }
-
-    .service-card {
-
-        min-width: 0;
-
-    }
-
-    .service-card img {
-
-        aspect-ratio: 4 / 3;
-
-        height: auto;
-
-    }
-
-    .service-content {
-
-        padding: 1.5rem;
-
-    }
-
-
-    /* TEAM */
-
-    #team {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #team h2 {
-
-        font-size: 2rem;
-
-    }
-
-    #team .section-description {
-
-        font-size: 1rem;
-
-        margin-bottom: var(--space-md);
-
-    }
-
-    .team-grid {
-
-        grid-template-columns:
-            minmax(0, 1fr);
-
-        gap: 1.5rem;
-
-    }
-
-    .team-card {
-
-        min-width: 0;
-
-    }
-
-    .team-card img {
-
-        aspect-ratio: 4 / 3;
-
-    }
-
-    .team-content {
-
-        padding: 1.5rem;
-
-    }
-
-    .team-content h3 {
-
-        font-size: 1.35rem;
-
-    }
-
-    .team-content blockquote {
-
-        font-size: 1rem;
-
-    }
-
-    .team-credentials {
-
-        font-size: .9rem;
-
-    }
-
-
-    /* FAQ */
-
-    #faq {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #faq h2 {
-
-        font-size: 2rem;
-
-    }
-
-    .faq-item {
-
-        min-width: 0;
-
-    }
-
-    .faq-question {
-
-        font-size: 1.05rem;
-
-        padding: 1.2rem;
-
-    }
-
-    .faq-answer {
-
-        padding: 0 1.2rem 1.2rem;
-
-    }
-
-
-    /* CONTACT */
-
-    #contact {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #contact h2 {
-
-        font-size: 2rem;
-
-    }
-
-    .contact-grid {
-
-        grid-template-columns:
-            minmax(0, 1fr);
-
-        gap: 2rem;
-
-    }
-
-    .contact-card {
-
-        width: 100%;
-
-        min-width: 0;
-
-        padding: 1.5rem;
-
-    }
-
-
-    /* FOOTER */
-
-    #footer {
-
-        width: 100%;
-
-        padding: 2.5rem 0 0;
-
-    }
-
-    #footer .container {
-
-        width: 92%;
-
-        display: grid;
-
-        grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
-        gap: 2rem;
-
-    }
-
-    .footer-brand,
-    .footer-nav,
-    .footer-social {
-
-        min-width: 0;
-
-    }
-
-    .footer-brand {
-
-        grid-column: 1 / -1;
-
-        text-align: center;
-
-    }
-
-    .footer-brand h2 {
-
-        font-size: 1.8rem;
-
-        margin-bottom: .4rem;
-
-    }
-
-    .footer-brand p {
-
-        margin: 0 auto;
-
-        max-width: 280px;
-
-        line-height: 1.5;
-
-    }
-
-
-    /* FOOTER NAV */
-
-    .footer-nav {
-
-        justify-self: center;
-
-        align-items: center;
-
-    }
-
-    .footer-nav ul {
-
-        display: grid;
-
-        grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
-        gap: .65rem 1.5rem;
-
-        min-width: 0;
-
-    }
-
-    .footer-nav li {
-
-        min-width: 0;
-
-        text-align: center;
-
-    }
-
-
-    /* FOOTER SOCIAL */
-
-    .footer-social {
-
-        justify-self: center;
-
-        align-items: center;
-
-    }
-
-    .footer-social ul {
-
-        display: flex;
-
-        flex-direction: row;
-
-        justify-content: center;
-
-        gap: 1rem;
-
-    }
-
-    #footer a {
-
-        font-size: .9rem;
-
-    }
-
-    #footer a:hover {
-
+        opacity: 1;
         transform: none;
+        transition: none;
+        animation: none;
 
     }
 
 }
-
-
-/* ==========================================================
-   RESPONSIVE - HORARIOS 992px
-========================================================== */
-
-@media (max-width: 992px) {
-
-    #horarios {
-
-        padding: var(--space-lg) 0;
-
-    }
-
-    #horarios h2 {
-
-        font-size: 2.2rem;
-
-    }
-
-    .schedule-table {
-
-        min-width: 680px;
-
-        border-spacing: 5px;
-
-    }
-
-    .schedule-table th {
-
-        padding: .85rem .65rem;
-
-        font-size: .85rem;
-
-    }
-
-    .schedule-table td {
-
-        height: 50px;
-
-        padding: .45rem;
-
-    }
-
-    .class-tag,
-    .time-slot {
-
-        font-size: .8rem;
-
-    }
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE - HORARIOS 768px
-========================================================== */
-
-@media (max-width: 768px) {
-
-    #horarios h2 {
-
-        font-size: 2rem;
-
-    }
-
-    #horarios .section-description {
-
-        font-size: 1rem;
-
-    }
-
-    .table-wrapper {
-
-        padding: .35rem;
-
-    }
-
-    .schedule-table {
-
-        min-width: 650px;
-
-        border-spacing: 4px;
-
-    }
-
-    .schedule-table th {
-
-        padding: .7rem .5rem;
-
-        font-size: .78rem;
-
-        letter-spacing: .05em;
-
-    }
-
-    .schedule-table td {
-
-        height: 48px;
-
-        padding: .4rem;
-
-    }
-
-    .class-tag,
-    .time-slot {
-
-        font-size: .75rem;
-
-    }
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE - HORARIOS 480px
-========================================================== */
-
-@media (max-width: 480px) {
-
-    .container {
-
-        width: 94%;
-
-    }
-
-
-    /* HEADER */
-
-    .brand h1 {
-
-        font-size: 1.7rem;
-
-    }
-
-    .brand p {
-
-        font-size: .9rem;
-
-    }
-
-    .menu-toggle {
-
-        width: 40px;
-
-        height: 40px;
-
-        font-size: 1.1rem;
-
-    }
-
-
-    /* MENU */
-
-    .menu {
-
-        width: 100%;
-
-        max-width: 100%;
-
-        padding: .5rem;
-
-        border-radius: 14px;
-
-    }
-
-    .menu a {
-
-        padding: .6rem .75rem;
-
-        font-size: .9rem;
-
-    }
-
-
-    /* HERO */
-
-    #hero h1 {
-
-        font-size: 1.7rem;
-
-    }
-
-    .hero-image {
-
-        height: 230px;
-
-    }
-
-
-    /* ABOUT */
-
-    .about-content h2 {
-
-        font-size: 1.7rem;
-
-    }
-
-
-    /* SERVICES */
-
-    #services h2 {
-
-        font-size: 1.7rem;
-
-    }
-
-    .service-content {
-
-        padding: 1.2rem;
-
-    }
-
-    .service-content h3 {
-
-        font-size: 1.3rem;
-
-    }
-
-
-    /* TEAM */
-
-    #team h2 {
-
-        font-size: 1.7rem;
-
-    }
-
-    .team-content {
-
-        padding: 1.2rem;
-
-        gap: .8rem;
-
-    }
-
-    .team-card img {
-
-        aspect-ratio: 1 / 1;
-
-    }
-
-
-    /* FAQ */
-
-    #faq h2 {
-
-        font-size: 1.7rem;
-
-    }
-
-
-    /* CONTACT */
-
-    #contact h2 {
-
-        font-size: 1.7rem;
-
-    }
-
-    .contact-card {
-
-        padding: 1.5rem;
-
-    }
-
-    .contact-card .button {
-
-        width: 100%;
-
-        text-align: center;
-
-    }
-
-
-    /* FOOTER */
-
-    #footer {
-
-        padding-top: 2rem;
-
-    }
-
-    #footer .container {
-
-        display: block;
-
-        width: 90%;
-
-    }
-
-    .footer-brand {
-
-        margin-bottom: 1.75rem;
-
-    }
-
-    .footer-brand h2 {
-
-        font-size: 1.6rem;
-
-    }
-
-    .footer-brand p {
-
-        font-size: .9rem;
-
-        line-height: 1.5;
-
-    }
-
-    .footer-nav {
-
-        margin-bottom: 1.75rem;
-
-    }
-
-    .footer-nav h3,
-    .footer-social h3 {
-
-        font-size: .95rem;
-
-        margin-bottom: .8rem;
-
-    }
-
-    .footer-nav ul {
-
-        grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
-        gap: .6rem .8rem;
-
-        width: 100%;
-
-    }
-
-    #footer a {
-
-        font-size: .9rem;
-
-    }
-
-    .footer-social {
-
-        margin-bottom: 0;
-
-    }
-
-    .footer-social ul {
-
-        gap: 1rem;
-
-    }
-
-    .footer-bottom {
-
-        margin-top: 1.5rem;
-
-        padding: .8rem 0;
-
-    }
-
-    .footer-bottom p {
-
-        font-size: .75rem;
-
-    }
-
-
-    /* HORARIOS */
-
-    #horarios h2 {
-
-        font-size: 1.7rem;
-
-    }
-
-    #horarios .section-description {
-
-        font-size: .95rem;
-
-        line-height: 1.7;
-
-    }
-
-    .table-wrapper {
-
-        padding: .25rem;
-
-        border-radius: var(--radius-sm);
-
-    }
-
-    .schedule-table {
-
-        min-width: 620px;
-
-        border-spacing: 3px;
-
-    }
-
-    .schedule-table th {
-
-        padding: .6rem .4rem;
-
-        font-size: .72rem;
-
-        letter-spacing: .03em;
-
-    }
-
-    .schedule-table td {
-
-        height: 46px;
-
-        padding: .35rem .3rem;
-
-    }
-
-    .time-slot {
-
-        padding: .4rem .55rem;
-
-        font-size: .72rem;
-
-    }
-
-    .class-tag {
-
-        font-size: .72rem;
-
-        line-height: 1.2;
-
-    }
-
-    .horarios-cta {
-
-        width: 100%;
-
-    }
-
-    .horarios-cta .button {
-
-        width: 100%;
-
-    }
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE - 400px
-========================================================== */
-
-@media (max-width: 400px) {
-
-    .brand h1 {
-
-        font-size: 1.6rem;
-
-    }
-
-    .brand p {
-
-        font-size: .85rem;
-
-    }
-
-    #hero h1,
-    .about-content h2,
-    #services h2,
-    #team h2,
-    #faq h2,
-    #contact h2,
-    #horarios h2 {
-
-        font-size: 1.6rem;
-
-    }
-
-
-    /* Tabla */
-
-    .schedule-table {
-
-        min-width: 600px;
-
-    }
-
-    .schedule-table th,
-    .class-tag,
-    .time-slot {
-
-        font-size: .7rem;
-
-    }
-
-}
-
 
 /* ==========================================================
    ANIMACIÓN - HERO
@@ -2816,8 +2498,7 @@ nav {
 
     transform: translateY(25px);
 
-    animation:
-        hero-entry .7s ease forwards;
+    animation: hero-entry .7s ease forwards;
 
 }
 
@@ -2847,162 +2528,55 @@ nav {
 
 }
 
-
 /* ==========================================================
-   ACCESIBILIDAD - REDUCIR ANIMACIONES
+   ANIMACIÓN - TARJETAS
 ========================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .service-card,
-    .about-image,
-    .about-content,
-    .hero-content,
-    .hero-image,
-    .team-card,
-    .contact-card {
-
-        opacity: 1;
-
-        transform: none;
-
-        transition: none;
-
-        animation: none;
-
-    }
-
-    html {
-
-        scroll-behavior: auto;
-
-    }
-
-}
-
-/* ==========================================================
-   CORRECCIONES FINALES DE OVERFLOW
-========================================================== */
-
-/* ----------------------------------------------------------
-   BOX SIZING
-   ---------------------------------------------------------- */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-
-/* ----------------------------------------------------------
-   IMÁGENES Y MULTIMEDIA
-   No modifica sus proporciones ni sus alturas originales.
-   ---------------------------------------------------------- */
-
-img,
-picture,
-video,
-canvas,
-svg {
-    max-width: 100%;
-}
-
-
-/* ----------------------------------------------------------
-   CONTENEDOR
-   IMPORTANTE:
-   Conservamos el comportamiento original de .container.
-   ---------------------------------------------------------- */
-
-.container {
-    width: 90%;
-    max-width: var(--container-width);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-/* ----------------------------------------------------------
-   FLEXBOX
-   Evita que los elementos internos obliguen al contenedor
-   a crecer más allá del viewport.
-   ---------------------------------------------------------- */
-
-.hero-content,
-.hero-image,
-.about-image,
-.about-content,
-.contact-info,
-.contact-card,
-.footer-brand,
-.footer-nav,
-.footer-social {
-    min-width: 0;
-}
-
-
-/* ----------------------------------------------------------
-   GRIDS
-   minmax(0, 1fr) permite que las columnas puedan encogerse.
-   ---------------------------------------------------------- */
-
-.services-grid,
-.team-grid,
-.contact-grid {
-    min-width: 0;
-}
 
 .service-card,
 .team-card {
-    min-width: 0;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+.service-card.is-visible,
+.team-card.is-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ==========================================================
+   ANIMACIÓN - TEAM
+========================================================== */
+
+.team-card {
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+.team-card.is-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
 }
 
 
-/* ----------------------------------------------------------
-   TEXTOS
-   Evita que palabras o URLs extremadamente largas
-   provoquen overflow.
-   ---------------------------------------------------------- */
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-blockquote {
-    overflow-wrap: break-word;
-}
-
-
-/* ----------------------------------------------------------
-   TABLA DE HORARIOS
-   La tabla SÍ puede ser más ancha que el móvil,
-   pero únicamente dentro de .table-wrapper.
-   ---------------------------------------------------------- */
-
-.table-wrapper {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-}
-
-.schedule-table {
-    max-width: none;
-}
-
-
-/* ----------------------------------------------------------
-   ELEMENTOS INTERACTIVOS
-   ---------------------------------------------------------- */
-
-button,
-input,
-textarea,
-select {
-    max-width: 100%;
-}
