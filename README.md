@@ -50,7 +50,7 @@ company-website/
 
 ## 🚧 Current Status
 
-**Sprint 2** — Project initialization.
+**Sprint 7** — Production Readiness & Deployment.
 
 ---
 
