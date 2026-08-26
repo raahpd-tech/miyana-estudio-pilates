@@ -5,11 +5,37 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const menu = document.querySelector("#primary-menu");
 
+
+// ---------- Cerrar menú ----------
+
+function closeMenu() {
+
+    menu.classList.remove("is-open");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        "Abrir menú"
+    );
+
+}
+
+
+// ---------- Abrir / cerrar menú ----------
+
 menuToggle.addEventListener("click", () => {
 
-    const isOpen = menu.classList.toggle("is-open");
+    const isOpen =
+        menu.classList.toggle("is-open");
 
-    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
 
     menuToggle.setAttribute(
         "aria-label",
@@ -23,20 +49,14 @@ menuToggle.addEventListener("click", () => {
 // CERRAR MENÚ AL SELECCIONAR UNA SECCIÓN
 // ==========================================================
 
-const menuLinks = document.querySelectorAll("#primary-menu a");
+const menuLinks =
+    document.querySelectorAll("#primary-menu a");
 
 menuLinks.forEach(link => {
 
     link.addEventListener("click", () => {
 
-        menu.classList.remove("is-open");
-
-        menuToggle.setAttribute("aria-expanded", "false");
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Abrir menú"
-        );
+        closeMenu();
 
     });
 
@@ -51,14 +71,7 @@ document.addEventListener("keydown", (event) => {
 
     if (event.key === "Escape") {
 
-        menu.classList.remove("is-open");
-
-        menuToggle.setAttribute("aria-expanded", "false");
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Abrir menú"
-        );
+        closeMenu();
 
     }
 
@@ -77,35 +90,32 @@ document.addEventListener("click", (event) => {
 
     if (clickedOutsideMenu) {
 
-        menu.classList.remove("is-open");
-
-        menuToggle.setAttribute("aria-expanded", "false");
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Abrir menú"
-        );
+        closeMenu();
 
     }
 
 });
 
+
 // ==========================================================
 // FAQ - ACORDEÓN
 // ==========================================================
 
-const faqQuestions = document.querySelectorAll(".faq-question");
+const faqQuestions =
+    document.querySelectorAll(".faq-question");
 
 faqQuestions.forEach(question => {
 
     question.addEventListener("click", () => {
 
-        const faqItem = question.closest(".faq-item");
+        const faqItem =
+            question.closest(".faq-item");
 
-        const isOpen = faqItem.classList.contains("is-open");
+        const isOpen =
+            faqItem.classList.contains("is-open");
 
 
-        // Cerrar todos los FAQ
+        // ---------- Cerrar todos los FAQ ----------
 
         faqQuestions.forEach(otherQuestion => {
 
@@ -122,7 +132,7 @@ faqQuestions.forEach(question => {
         });
 
 
-        // Abrir el seleccionado si estaba cerrado
+        // ---------- Abrir el seleccionado ----------
 
         if (!isOpen) {
 
@@ -139,51 +149,65 @@ faqQuestions.forEach(question => {
 
 });
 
+
 // ==========================================================
 // NAVEGACIÓN ACTIVA SEGÚN LA SECCIÓN VISIBLE
 // ==========================================================
 
-const sections = document.querySelectorAll("main section[id]");
-const navigationLinks = document.querySelectorAll(".menu a");
+const sections =
+    document.querySelectorAll("main section[id]");
 
-const sectionObserver = new IntersectionObserver(
-    (entries) => {
+const navigationLinks =
+    document.querySelectorAll(".menu a");
 
-        entries.forEach(entry => {
+const sectionObserver =
+    new IntersectionObserver(
+        (entries) => {
 
-            if (entry.isIntersecting) {
+            entries.forEach(entry => {
 
-                navigationLinks.forEach(link => {
+                if (entry.isIntersecting) {
 
-                    link.classList.remove("active");
-                    link.removeAttribute("aria-current");
+                    // ---------- Limpiar estado anterior ----------
 
-                });
+                    navigationLinks.forEach(link => {
 
-                const activeLink = document.querySelector(
-                    `.menu a[href="#${entry.target.id}"]`
-                );
+                        link.classList.remove("active");
 
-                if (activeLink) {
+                        link.removeAttribute(
+                            "aria-current"
+                        );
 
-                    activeLink.classList.add("active");
+                    });
 
-                    activeLink.setAttribute(
-                        "aria-current",
-                        "page"
-                    );
+
+                    // ---------- Activar sección actual ----------
+
+                    const activeLink =
+                        document.querySelector(
+                            `.menu a[href="#${entry.target.id}"]`
+                        );
+
+                    if (activeLink) {
+
+                        activeLink.classList.add("active");
+
+                        activeLink.setAttribute(
+                            "aria-current",
+                            "page"
+                        );
+
+                    }
 
                 }
 
-            }
+            });
 
-        });
-
-    },
-    {
-        threshold: 0.2
-    }
-);
+        },
+        {
+            threshold: 0.2
+        }
+    );
 
 sections.forEach(section => {
 
@@ -191,39 +215,51 @@ sections.forEach(section => {
 
 });
 
+
 // ==========================================================
-// ANIMACIONES DE ENTRADA - SERVICES
+// ANIMACIONES DE ENTRADA
 // ==========================================================
 
 const animatedElements =
     document.querySelectorAll(
-        ".service-card, .about-image, .about-content, .team-card, .contact-card"
+        ".service-card, " +
+        ".about-image, " +
+        ".about-content, " +
+        ".team-card, " +
+        ".contact-card"
     );
 
-const animationObserver = new IntersectionObserver(
-    (entries, observer) => {
+const animationObserver =
+    new IntersectionObserver(
+        (entries, observer) => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
+                if (entry.isIntersecting) {
 
-                entry.target.classList.add("is-visible");
+                    entry.target.classList.add(
+                        "is-visible"
+                    );
 
-                observer.unobserve(entry.target);
+                    // Ya no necesitamos observar
+                    // este elemento.
 
-            }
+                    observer.unobserve(
+                        entry.target
+                    );
 
-        });
+                }
 
-    },
-    {
-        threshold: 0.15
-    }
-);
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
 animatedElements.forEach(element => {
 
     animationObserver.observe(element);
 
 });
-
